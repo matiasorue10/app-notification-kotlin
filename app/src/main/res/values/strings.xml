@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Firebase Push Notification</string>
+    <string name="btnSuscribir">Suscribir</string>
+    <string name="msg_subscribed">Suscripción Aceptada!</string>
+    <string name="msg_subscribe_failed">No se ha podido suscribir!</string>
+    <string name="btnRegistrarUsuario">Registrar Usuario</string>
+</resources>

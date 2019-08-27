@@ -16,10 +16,10 @@ interface ApiService {
 
 
     @POST("apiNotification/AltaUsuario.php")
-    fun altaUsuario(@Body user: JSONObject): Call<UsuarioResponse>
+    fun altaUsuario(@Body usuario: Usuario ): Call<UsuarioResponse>
 
     @POST("firebase/Usuario_x_Canales.php")
-    fun suscribirseCanal(@Body canalPorUsuario: JSONObject): Call<CanalPorUsuarioResponse>
+    fun suscribirseCanal(@Body canalPorUsuario: CanalPorUsuario): Call<CanalPorUsuarioResponse>
 
     @GET("firebase/ObtenerCanales.php")
     fun getCanales(): Call<List<Canal>>

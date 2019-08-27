@@ -1,11 +1,8 @@
-package com.example.firebasepushnotification.services
+package com.example.firebase_notification_kotlin
 
 import android.content.Intent
 import android.util.Log
-import com.example.firebase_notification_kotlin.MainActivity
 
-import com.example.firebasepushnotification.utils.NotificationUtils
-import com.example.firebasepushnotification.vo.NotificationVO
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 

@@ -1,4 +1,4 @@
-package com.example.firebasepushnotification.utils
+package com.example.firebase_notification_kotlin
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -14,9 +14,6 @@ import android.net.Uri
 import android.os.Build
 import android.text.Html
 import androidx.core.app.NotificationCompat
-import com.example.firebase_notification_kotlin.MainActivity
-import com.example.firebase_notification_kotlin.R
-import com.example.firebasepushnotification.vo.NotificationVO
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL

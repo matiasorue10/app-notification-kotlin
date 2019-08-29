@@ -12,7 +12,9 @@ import android.graphics.BitmapFactory
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import java.io.IOException
 import java.net.HttpURLConnection
@@ -21,12 +23,17 @@ import java.util.*
 
 
 class NotificationUtils(private val mContext: Context) {
-    internal var activityMap: MutableMap<String, Class<*>> = HashMap()
+
+    private var activityMap: MutableMap<String, Class<*>> = HashMap()
+
+    lateinit var notificationVO2: NotificationVO
 
     init {
         //Populate activity map
         activityMap["MainActivity"] = MainActivity::class.java
+        activityMap["SecondActivity"] = SecondActivity::class.java
     }
+
 
     /**
      * Displays notification based on parameters
@@ -37,14 +44,16 @@ class NotificationUtils(private val mContext: Context) {
     fun displayNotification(notificationVO: NotificationVO, resultIntent: Intent) {
         var resultIntent = resultIntent
         run {
+            notificationVO2 = notificationVO
             val message = notificationVO.message
             val title = notificationVO.title
-            val iconUrl = notificationVO.iconUrl
+            val iconUrl = notificationVO.image
             val action = notificationVO.action
             val destination = notificationVO.actionDestination
             var iconBitMap: Bitmap? = null
             if (iconUrl != null) {
                 iconBitMap = getBitmapFromURL(iconUrl)
+                println("Icon url " + iconUrl)
             }
             val icon = R.mipmap.ic_launcher
 
@@ -56,6 +65,8 @@ class NotificationUtils(private val mContext: Context) {
                 resultPendingIntent = PendingIntent.getActivity(mContext, 0, notificationIntent, 0)
             } else if (ACTIVITY == action && activityMap.containsKey(destination)) {
                 resultIntent = Intent(mContext, activityMap.get(destination))
+
+                resultIntent.putExtra("Notificacion", notificationVO)
 
                 resultPendingIntent = PendingIntent.getActivity(
                     mContext,

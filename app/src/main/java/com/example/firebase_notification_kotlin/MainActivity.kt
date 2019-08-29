@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity(), CanalInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val usertoken = FirebaseInstanceId.getInstance().getToken()
-        println("User token: " + usertoken)
         usertoken?.let {
             usuario = Usuario(
                 0,
@@ -43,10 +42,14 @@ class MainActivity : AppCompatActivity(), CanalInterface {
                 'F',
                 it
             )
+            println("User token: " + usertoken)
         }
         obtenerCanales()
 
         lista_canales.adapter = adapter
+
+        FirebaseMessaging.getInstance().subscribeToTopic("global")
+
 
     }
 
